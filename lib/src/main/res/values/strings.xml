@@ -1,0 +1,7 @@
+<resources
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="version_template">Version: <xliff:g id="version-number" example="1.2.3">%1$s</xliff:g></string>
+    <string name="copyright_template">\@<xliff:g id="copyright-year" example="2015">%1$tY</xliff:g> <xliff:g id="copyright-owner" example="Sascha Peilicke">%2$s</xliff:g></string>
+
+</resources>

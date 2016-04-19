@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VersionInfo Example</string>
+
+    <string name="show_version_information">Show version information dialog</string>
+</resources>

@@ -9,6 +9,3 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
     }
 }
-
-dependencies {
-}

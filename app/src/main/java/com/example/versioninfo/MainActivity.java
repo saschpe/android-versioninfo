@@ -1,5 +1,6 @@
 package com.example.versioninfo;
 
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void showVersionInformation(View view) {
+    public void showVersionInfoDialog(View view) {
         VersionInfoDialogFragment
                 .newInstance(
                         getString(R.string.app_name),
@@ -21,5 +22,15 @@ public class MainActivity extends AppCompatActivity {
                         "Sascha Peilicke",
                         R.mipmap.ic_launcher)
                 .show(getFragmentManager(), "version_info");
+    }
+
+    public void showVersionInfoFragment(View view) {
+        DialogFragment fragment = VersionInfoDialogFragment.newInstance(
+                getString(R.string.app_name),
+                BuildConfig.VERSION_NAME,
+                "Sascha Peilicke",
+                R.mipmap.ic_launcher);
+
+        getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 }

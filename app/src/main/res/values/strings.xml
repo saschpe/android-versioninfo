@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">VersionInfo Example</string>
 
-    <string name="show_version_information">Show version information dialog</string>
+    <string name="description">Version information can be displayed as a dialog or fragment:</string>
+
+    <string name="show_dialog">Show as dialog</string>
+    <string name="show_fragment">Show as embedded fragment</string>
 </resources>

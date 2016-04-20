@@ -16,7 +16,6 @@ import java.util.GregorianCalendar;
  * Dialog fragment to display app name and version
  */
 public class VersionInfoDialogFragment extends DialogFragment {
-
     private static final String ARG_TITLE = "title";
     private static final String ARG_VERSION = "version";
     private static final String ARG_OWNER = "owner";
@@ -31,7 +30,7 @@ public class VersionInfoDialogFragment extends DialogFragment {
      * @param imageId ID of a image resource to display, like e.g."@mipmap/ic_launcher"
      * @return A new instance of VersionInfoDialogFragment.
      */
-    static public VersionInfoDialogFragment newInstance(String title, String version, String copyrightOwner, int imageId) {
+    public static VersionInfoDialogFragment newInstance(String title, String version, String copyrightOwner, int imageId) {
         VersionInfoDialogFragment fragment = new VersionInfoDialogFragment();
         Bundle args = new Bundle();
         args.putString(ARG_TITLE, title);
@@ -46,6 +45,13 @@ public class VersionInfoDialogFragment extends DialogFragment {
     private String version;
     private String owner;
     private int imageId;
+    private final String packageName;
+    private final GregorianCalendar calendar;
+
+    public VersionInfoDialogFragment() {
+        packageName = getActivity().getPackageName();
+        calendar = new GregorianCalendar();  // Needed for the 4-digit year
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,9 +69,6 @@ public class VersionInfoDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // R class is not generated for libraries, thus we have to go the long road...
         // See https://sites.google.com/a/android.com/tools/recent/dealingwithdependenciesinandroidprojects
-
-        String packageName = inflater.getContext().getPackageName();
-
         int fragmentId = getResources().getIdentifier("fragment_version_info", "layout", packageName);
         View view = inflater.inflate(fragmentId, container, false);
 
@@ -80,14 +83,11 @@ public class VersionInfoDialogFragment extends DialogFragment {
 
         int versionViewId = getResources().getIdentifier("version", "id", packageName);
         TextView versionView = (TextView) view.findViewById(versionViewId);
-        int versionInfoStringId = getResources().getIdentifier("version_template", "string", packageName);
-        versionView.setText(String.format(getString(versionInfoStringId), version));
+        versionView.setText(getFormattedVersion());
 
-        GregorianCalendar cal = new GregorianCalendar();
         int copyrightViewId = getResources().getIdentifier("copyright", "id", packageName);
         TextView copyrightView = (TextView) view.findViewById(copyrightViewId);
-        int copyrightStringId = getResources().getIdentifier("copyright_template", "string", packageName);
-        copyrightView.setText(String.format(getString(copyrightStringId), cal, owner));
+        copyrightView.setText(getFormattedCopyright());
 
         return view;
     }
@@ -101,5 +101,27 @@ public class VersionInfoDialogFragment extends DialogFragment {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCanceledOnTouchOutside(true);
         return dialog;
+    }
+
+    /**
+     * Returns the formatted version. To be used outside the dialog fragment, for instance
+     * in activity or preference titles.
+     *
+     * @return Version string
+     */
+    public String getFormattedVersion() {
+        int versionInfoStringId = getResources().getIdentifier("version_template", "string", packageName);
+        return getString(versionInfoStringId, version);
+    }
+
+    /**
+     * Returns the formatted copyright. To be used outside the dialog fragment, for instance
+     * in activity or preference titles.
+     *
+     * @return Copyright string
+     */
+    public String getFormattedCopyright() {
+        int copyrightStringId = getResources().getIdentifier("copyright_template", "string", packageName);
+        return getString(copyrightStringId, calendar, owner);
     }
 }

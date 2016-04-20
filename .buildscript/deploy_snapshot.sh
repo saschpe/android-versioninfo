@@ -5,7 +5,7 @@
 # Adapted from https://coderwall.com/p/9b_lfq and
 # http://benlimmer.com/2013/12/26/automatically-publish-javadoc-to-gh-pages-with-travis-ci/
 
-SLUG="saschpe/versioninfo"
+SLUG="saschpe/android-versioninfo"
 JDK="oraclejdk8"
 BRANCH="master"
 

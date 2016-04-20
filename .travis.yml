@@ -1,0 +1,33 @@
+language: android
+
+android:
+  components:
+    - build-tools-23.0.1
+    - android-23
+  licenses:
+    - android-sdk-license-5be876d5
+
+jdk:
+  - oraclejdk7
+  - oraclejdk8
+
+after_success:
+  - .buildscript/deploy_snapshot.sh
+
+env:
+  global:
+    - secure: "niG7GFDbHwiW1tbl0wEYuGT4G3JUTx2oJ4/ELkM9qhHFJC6UpWzKUtEQVf/RnxyN8I3Yq/MvPxkRd6zNCme6qUvMkdu9S3AIAMOJ0e0idmf8QXqE8AOPA7BeqdO8X+FAKnzvV8eBhGkiWdW+DaHh3sPjVOEOmM1LolLtbc1ch9RhfYuf9HAI2DodUKzmS/wn6j2XWYJc9AmPyKpudkeALvvJ7kNjle6+Y7t0INwqFNl9YS8Xs9ukjKKcEtAZmXfSppjGA9JrXUm+ThIMIs6HOL8AYtJC8EKMIPEHCn1NqTfLoOGSQv1wDJBt/4RkRvG47cPaV7Z4tj6Pev7o6104FDyLt7OtK+qA1tHsyOMCWv5rFuUZ9N6aZXzasb87TzpzdsYn2zL48V+Q8CDPnGc1T4xIjC0rIl6MP4YxLWuBRsiiE//klSQ7NvgtBgVtEaOfbn48Nkz2wY69R8Ghq17BF+/VgBk/sVxSzwBi/Vp7UGxoX04a1qu+0VlTfnBJ/IVKg67ZWYIhew7IbkM4Tx1IgjT9L7O0ZOAj4uUJWrgOwV8nqG7LhPFbytEH7Seb19paDuxsR9BZmnu8pRzqq/faPAphtVXQgqc95Je2rOduu84PqEvOD7VtlRDovvSOVMkMW5XqeJId2xyHppVIc/f0QRLQErJ6aMyGM8kSKFsAPY0="
+    - secure: "k5hDhxTQfWj9EV6nMbNGk/KvOSOaOWFUojDHGSOCFwcpbdFYw47Dpn2/BHbBzKJYRlVbCXTEq46DAYi9xbVLXutg4msHT9tVBrxjIzda/haYViMxK1G8LDI643xRWSB4LvFiVh6+WuEbtkprwmdyhCdomcqdz58uMlCoECuwj2NKoj1Yy4kONWkQUgPqtd1agcYVKsSg66PGDT42zcAuZQ9RU3uz4dToSD0YwZ+vIBv9MxoZATMpViQTlhAK14RjIpDyDfbMdNpskhOCGhxR5lYkZ0U9+GYLss3EPkA255PYmz8rku+JNMc1bdEXnXjNeKQDxZr8WRwchzvfbbsQL5e9zsgBdzj0SJBswKoTsXyqIG+ZlrFrwjfh5U2VmKPNOpPbrZYie3tFYTzkPkiGKNXnU0CoVwFAlLeJBNXHBun4ewSJb9YaJ4Qn4Vtz7CGtqg9niGSVQXUsWLiOWUmczNwcTgc/jfGzIeVAsS/jGTzIzN5jehl4PFzXSaZsUm5sQjkQO3hE8N9YzqdwogRddQ2MVXKfO0YMzkTCYowObJxlCI5wv6Cv/Kv8FcXA+VciDABUa2LlLwSK44DNwBni9lifUgNpn2ttmpy89tVWW2VUjpoOfE8Dtdnq32olzwIVIkVGQ/uBervlpbuWr9PcjG2m0Knpc00Wyo99WtEIOl4="
+
+branches:
+  except:
+    - gh-pages
+
+notifications:
+  email: false
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.m2

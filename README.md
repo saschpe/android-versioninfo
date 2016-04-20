@@ -1,6 +1,8 @@
 VersionInfo
 -----------
 
+[![Build Status](https://travis-ci.org/saschpe/android-versioninfo.svg?branch=master)](https://travis-ci.org/saschpe/android-versioninfo)
+
 All about activities have a version info widget somewhere. This library provides one that can be
 used as a dialog or fragment. It honors default styling rules, Material-style:
 

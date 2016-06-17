@@ -32,13 +32,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:text="@string/version_template" />
+            tools:text="@string/version_template" />
 
         <TextView
             android:id="@+id/copyright"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/copyright_template" />
+            tools:text="@string/copyright_template" />
 
     </LinearLayout>
 

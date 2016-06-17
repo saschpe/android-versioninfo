@@ -21,8 +21,6 @@ task clean(type: Delete) {
 }
 
 ext {
-    version = '1.0'
-
     // Sdk and tools
     minSdkVersion = 11
     targetSdkVersion = 23

@@ -10,7 +10,7 @@ android {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
-        versionName rootProject.ext.version
+        versionName '1.1'
     }
 
     lintOptions {
@@ -27,7 +27,7 @@ android {
 }
 
 group = 'saschpe'
-version = rootProject.ext.version
+version = android.defaultConfig.versionName
 
 ext {
     siteUrl = 'https://github.com/saschpe/android-versioninfo'

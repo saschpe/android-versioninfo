@@ -2,6 +2,7 @@ package saschpe.versioninfo.widget;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,10 +12,10 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.GregorianCalendar;
+import saschpe.versioninfo.VersionInfoUtils;
 
 /**
- * Dialog fragment to display app name and version
+ * Dialog fragment to display app name and version.
  */
 public class VersionInfoDialogFragment extends DialogFragment {
     private static final String ARG_TITLE = "title";
@@ -47,10 +48,8 @@ public class VersionInfoDialogFragment extends DialogFragment {
     private String owner;
     private int imageId;
     private String packageName;
-    private final GregorianCalendar calendar;
 
     public VersionInfoDialogFragment() {
-        calendar = new GregorianCalendar();  // Needed for the 4-digit year
     }
 
     @Override
@@ -112,22 +111,32 @@ public class VersionInfoDialogFragment extends DialogFragment {
     /**
      * Returns the formatted version. To be used outside the dialog fragment, for instance
      * in activity or preference titles.
+     * <p>
+     * Only works if the fragment is attached to an {@link android.app.Activity}.
+     * Otherwise use {@link VersionInfoUtils#getFormattedVersion(Context, String, String)}.
      *
      * @return Version string
      */
     public String getFormattedVersion() {
-        int versionInfoStringId = getResources().getIdentifier("version_template", "string", packageName);
-        return getString(versionInfoStringId, version);
+        if (isAdded()) {
+            return VersionInfoUtils.getFormattedVersion(getActivity(), packageName, version);
+        }
+        return null;
     }
 
     /**
      * Returns the formatted copyright. To be used outside the dialog fragment, for instance
      * in activity or preference titles.
+     * <p>
+     * Only works if the fragment is attached to an {@link android.app.Activity}.
+     * Otherwise use {@link VersionInfoUtils#getFormattedCopyright(Context, String, String)}.
      *
      * @return Copyright string
      */
     public String getFormattedCopyright() {
-        int copyrightStringId = getResources().getIdentifier("copyright_template", "string", packageName);
-        return getString(copyrightStringId, calendar, owner);
+        if (isAdded()) {
+            return VersionInfoUtils.getFormattedCopyright(getActivity(), packageName, owner);
+        }
+        return null;
     }
 }

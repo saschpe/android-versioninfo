@@ -7,11 +7,19 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
+        versionCode 1
+        versionName project.version
     }
 
     lintOptions {
         abortOnError false
     }
-}
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}

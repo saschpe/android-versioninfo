@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion project.compileSdkVersion
@@ -8,7 +10,7 @@ android {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
-        versionName project.version
+        versionName rootProject.ext.version
     }
 
     lintOptions {
@@ -22,4 +24,82 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+group = 'saschpe'
+version = rootProject.ext.version
+
+ext {
+    siteUrl = 'https://github.com/saschpe/android-versioninfo'
+    gitUrl = 'https://github.com/saschpe/android-versioninfo.git'
+    descr = 'A version info widget for Android. Material style.'
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives'] //When uploading configuration files
+    pkg {
+        repo = 'maven'
+        name = 'android-versioninfo'
+        userOrg = 'saschpe'
+        websiteUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/saschpe/android-versioninfo/issues'
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        desc = descr
+        labels = ['aar', 'android']
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            //name = rootProject.ext.version
+            desc = descr
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name project.name
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
 }

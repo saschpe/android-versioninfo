@@ -2,6 +2,7 @@ package saschpe.versioninfo.widget;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,11 +46,10 @@ public class VersionInfoDialogFragment extends DialogFragment {
     private String version;
     private String owner;
     private int imageId;
-    private final String packageName;
+    private String packageName;
     private final GregorianCalendar calendar;
 
     public VersionInfoDialogFragment() {
-        packageName = getActivity().getPackageName();
         calendar = new GregorianCalendar();  // Needed for the 4-digit year
     }
 
@@ -67,6 +67,12 @@ public class VersionInfoDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            packageName = getContext().getPackageName();
+        } else {
+            packageName = getActivity().getPackageName();
+        }
+
         // R class is not generated for libraries, thus we have to go the long road...
         // See https://sites.google.com/a/android.com/tools/recent/dealingwithdependenciesinandroidprojects
         int fragmentId = getResources().getIdentifier("fragment_version_info", "layout", packageName);

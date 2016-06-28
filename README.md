@@ -41,7 +41,7 @@ Download
 --------
 
 ```groovy
-compile 'saschpe:versioninfo:1.2.0'
+compile 'saschpe:versioninfo:1.2.1'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].

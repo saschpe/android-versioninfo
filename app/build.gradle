@@ -8,8 +8,8 @@ android {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         applicationId 'com.example.versioninfo'
-        versionCode 1
-        versionName '1.2.0'
+        versionCode 2
+        versionName '1.2.1'
     }
 
     lintOptions {

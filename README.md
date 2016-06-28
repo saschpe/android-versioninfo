@@ -1,6 +1,8 @@
 VersionInfo
 -----------
 
+[ ![Download](https://api.bintray.com/packages/saschpe/maven/android-versioninfo/images/download.svg) ](https://bintray.com/saschpe/maven/android-versioninfo/_latestVersion)
+
 All about activities have a version info widget somewhere. This library provides one that can be
 used as a dialog or fragment. It honors default styling rules, Material-style:
 

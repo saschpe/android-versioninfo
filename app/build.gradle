@@ -17,15 +17,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion project.compileSdkVersion
-    buildToolsVersion project.buildToolsVersion
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
-        minSdkVersion project.minSdkVersion
-        targetSdkVersion project.targetSdkVersion
         applicationId 'com.example.versioninfo'
-        versionCode 4
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1401123
         versionName '1.2.3'
+        archivesBaseName = "${applicationId}-${versionName}"
     }
 
     lintOptions {
@@ -35,5 +36,5 @@ android {
 
 dependencies {
     compile project(':versioninfo')
-    compile "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+    compile 'com.android.support:appcompat-v7:25.0.1'
 }

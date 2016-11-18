@@ -1,6 +1,4 @@
-VersionInfo
------------
-
+# VersionInfo
 [ ![Download](https://api.bintray.com/packages/saschpe/maven/android-versioninfo/images/download.svg) ](https://bintray.com/saschpe/maven/android-versioninfo/_latestVersion)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VersionInfo-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3832)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
@@ -12,9 +10,7 @@ used as a dialog or fragment. It honors default styling rules, Material-style:
 ![Fragment](doc/img/versioninfo-sample-fragment.png)
 
 
-Usage
------
-
+# Usage
 Allows to either display a version information dialog:
 
 ```java
@@ -41,9 +37,7 @@ getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit
 Check out the sample app in `app/` to see it in action.
 
 
-Download
---------
-
+# Download
 ```groovy
 compile 'saschpe:versioninfo:1.2.3'
 ```
@@ -51,8 +45,7 @@ compile 'saschpe:versioninfo:1.2.3'
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
 
 
-License
--------
+# License
 
     Copyright 2016 Sascha Peilicke
 

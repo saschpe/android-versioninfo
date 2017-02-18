@@ -1,4 +1,4 @@
-# VersionInfo
+# Android VersionInfo
 [ ![Download](https://api.bintray.com/packages/saschpe/maven/android-versioninfo/images/download.svg) ](https://bintray.com/saschpe/maven/android-versioninfo/_latestVersion)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VersionInfo-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3832)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)

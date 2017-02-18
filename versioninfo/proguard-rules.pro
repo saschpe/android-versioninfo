@@ -1,2 +1,2 @@
 -keepattributes EnclosingMethod
--keep class saschpe.versioninfo.** { *; }
+-keep class saschpe.android.versioninfo.** { *; }

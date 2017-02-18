@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package saschpe.versioninfo.widget;
+package saschpe.android.versioninfo.widget;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -28,7 +28,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import saschpe.versioninfo.VersionInfoUtils;
+import saschpe.android.versioninfo.VersionInfoUtils;
 
 /**
  * Dialog fragment to display app name and version.

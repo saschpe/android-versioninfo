@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package saschpe.versioninfo;
+package saschpe.android.versioninfo;
 
 import android.content.Context;
 

@@ -21,7 +21,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import saschpe.versioninfo.widget.VersionInfoDialogFragment;
+import saschpe.android.versioninfo.widget.VersionInfoDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
     @Override

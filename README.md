@@ -41,7 +41,7 @@ Check out the sample app in `app/` to see it in action.
 
 # Download
 ```groovy
-compile 'saschpe.android:versioninfo:1.2.6'
+compile 'saschpe.android:versioninfo:1.2.7'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].

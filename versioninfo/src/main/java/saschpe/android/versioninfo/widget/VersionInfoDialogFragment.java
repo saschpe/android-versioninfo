@@ -106,7 +106,7 @@ public class VersionInfoDialogFragment extends DialogFragment {
         TextView versionView = (TextView) view.findViewById(versionViewId);
         versionView.setText(getFormattedVersion());
 
-        int copyrightViewId = getResources().getIdentifier("copyright", "id", packageName);
+        int copyrightViewId = getResources().getIdentifier("my_copyright", "id", packageName);
         TextView copyrightView = (TextView) view.findViewById(copyrightViewId);
         copyrightView.setText(getFormattedCopyright());
 

@@ -51,7 +51,7 @@
             tools:text="@string/version_template" />
 
         <TextView
-            android:id="@+id/copyright"
+            android:id="@+id/my_copyright"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/copyright_template" />

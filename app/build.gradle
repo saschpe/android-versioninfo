@@ -29,10 +29,6 @@ android {
         archivesBaseName = "${applicationId}-${versionName}"
     }
 
-    lintOptions {
-        abortOnError false
-    }
-
     buildTypes {
         debug {
             applicationIdSuffix '.debug'

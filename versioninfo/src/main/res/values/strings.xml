@@ -15,9 +15,11 @@
   -->
 
 <resources
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="version_template">Version: <xliff:g id="version-number" example="1.2.3">%1$s</xliff:g></string>
-    <string name="copyright_template">\@<xliff:g id="copyright-year" example="2015">%1$tY</xliff:g> <xliff:g id="copyright-owner" example="Sascha Peilicke">%2$s</xliff:g></string>
+    <!-- These strings are loaded dynamically, hence Lint won't find it's usage -->
+    <string name="version_template" tools:ignore="UnusedResources">Version: <xliff:g id="version-number" example="1.2.3">%1$s</xliff:g></string>
+    <string name="copyright_template" tools:ignore="UnusedResources">\@<xliff:g id="copyright-year" example="2015">%1$tY</xliff:g> <xliff:g id="copyright-owner" example="Sascha Peilicke">%2$s</xliff:g></string>
 
 </resources>

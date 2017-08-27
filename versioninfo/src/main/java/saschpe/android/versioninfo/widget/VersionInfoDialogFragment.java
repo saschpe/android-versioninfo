@@ -33,7 +33,7 @@ import saschpe.android.versioninfo.VersionInfoUtils;
 /**
  * Dialog fragment to display app name and version.
  */
-public class VersionInfoDialogFragment extends DialogFragment {
+public final class VersionInfoDialogFragment extends DialogFragment {
     private static final String ARG_TITLE = "title";
     private static final String ARG_VERSION = "version";
     private static final String ARG_OWNER = "owner";
@@ -48,7 +48,7 @@ public class VersionInfoDialogFragment extends DialogFragment {
      * @param imageId ID of a image resource to display, like e.g."@mipmap/ic_launcher"
      * @return A new instance of VersionInfoDialogFragment.
      */
-    public static VersionInfoDialogFragment newInstance(String title, String version, String copyrightOwner, int imageId) {
+    public static VersionInfoDialogFragment newInstance(final String title, final String version, final String copyrightOwner, final int imageId) {
         VersionInfoDialogFragment fragment = new VersionInfoDialogFragment();
         Bundle args = new Bundle();
         args.putString(ARG_TITLE, title);
@@ -94,20 +94,20 @@ public class VersionInfoDialogFragment extends DialogFragment {
         View view = inflater.inflate(fragmentId, container, false);
 
         int imageViewId = getResources().getIdentifier("image", "id", packageName);
-        ImageView imageView = (ImageView) view.findViewById(imageViewId);
+        ImageView imageView = view.findViewById(imageViewId);
         imageView.setImageResource(imageId);
         imageView.setContentDescription(title);
 
         int titleViewId = getResources().getIdentifier("title", "id", packageName);
-        TextView titleView = (TextView) view.findViewById(titleViewId);
+        TextView titleView = view.findViewById(titleViewId);
         titleView.setText(title);
 
         int versionViewId = getResources().getIdentifier("version", "id", packageName);
-        TextView versionView = (TextView) view.findViewById(versionViewId);
+        TextView versionView = view.findViewById(versionViewId);
         versionView.setText(getFormattedVersion());
 
         int copyrightViewId = getResources().getIdentifier("my_copyright", "id", packageName);
-        TextView copyrightView = (TextView) view.findViewById(copyrightViewId);
+        TextView copyrightView = view.findViewById(copyrightViewId);
         copyrightView.setText(getFormattedCopyright());
 
         return view;

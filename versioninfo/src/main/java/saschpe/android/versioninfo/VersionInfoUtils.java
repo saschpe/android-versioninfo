@@ -20,7 +20,7 @@ import android.content.Context;
 
 import java.util.GregorianCalendar;
 
-public class VersionInfoUtils {
+public final class VersionInfoUtils {
     private final static GregorianCalendar calendar;
 
     static {
@@ -39,7 +39,7 @@ public class VersionInfoUtils {
      * @param version The app's version
      * @return Version string
      */
-    public static String getFormattedVersion(Context context, String version) {
+    public static String getFormattedVersion(final Context context, final String version) {
         return getFormattedVersion(context, context.getPackageName(), version);
     }
 
@@ -52,7 +52,7 @@ public class VersionInfoUtils {
      * @param version The app's version
      * @return Version string
      */
-    public static String getFormattedVersion(Context context, String packageName, String version) {
+    public static String getFormattedVersion(final Context context, final String packageName, final String version) {
         int versionInfoStringId = context.getResources().getIdentifier("version_template", "string", packageName);
         return context.getString(versionInfoStringId, version);
     }
@@ -65,7 +65,7 @@ public class VersionInfoUtils {
      * @param owner The app onwer.
      * @return Copyright string
      */
-    public static String getFormattedCopyright(Context context, String owner) {
+    public static String getFormattedCopyright(final Context context, final String owner) {
         return getFormattedCopyright(context, context.getPackageName(), owner);
     }
 
@@ -78,7 +78,7 @@ public class VersionInfoUtils {
      * @param owner The app onwer.
      * @return Copyright string
      */
-    public static String getFormattedCopyright(Context context, String packageName, String owner) {
+    public static String getFormattedCopyright(final Context context, final String packageName, final String owner) {
         int copyrightStringId = context.getResources().getIdentifier("copyright_template", "string", packageName);
         return context.getString(copyrightStringId, calendar, owner);
     }

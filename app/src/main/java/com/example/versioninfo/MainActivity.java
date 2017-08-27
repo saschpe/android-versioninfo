@@ -23,14 +23,14 @@ import android.view.View;
 
 import saschpe.android.versioninfo.widget.VersionInfoDialogFragment;
 
-public class MainActivity extends AppCompatActivity {
+public final class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    public void showVersionInfoDialog(View view) {
+    public void showVersionInfoDialog(final View view) {
         VersionInfoDialogFragment
                 .newInstance(
                         getString(R.string.app_name),
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 .show(getFragmentManager(), "version_info");
     }
 
-    public void showVersionInfoFragment(View view) {
+    public void showVersionInfoFragment(final View view) {
         DialogFragment fragment = VersionInfoDialogFragment.newInstance(
                 getString(R.string.app_name),
                 BuildConfig.VERSION_NAME,

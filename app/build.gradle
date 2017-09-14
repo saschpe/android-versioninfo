@@ -24,8 +24,8 @@ android {
         applicationId 'com.example.versioninfo'
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 1401129
-        versionName '1.2.9'
+        versionCode 1401130
+        versionName '1.3.0'
         archivesBaseName = "${applicationId}-${versionName}"
     }
 

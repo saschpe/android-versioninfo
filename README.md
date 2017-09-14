@@ -3,7 +3,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VersionInfo-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3832)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/saschpe/android-versioninfo.svg?branch=master)](https://travis-ci.org/saschpe/android-versioninfo)
-<a href="http://www.methodscount.com/?lib=saschpe.android%3Aversioninfo%3A1.2.9"><img src="https://img.shields.io/badge/Methods and size-42 | 8 KB-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=saschpe.android%3Aversioninfo%3A1.3.0"><img src="https://img.shields.io/badge/Methods and size-42 | 8 KB-e91e63.svg"/></a>
 
 All about activities have a version info widget somewhere. This library provides one that can be
 used as a dialog or fragment. It honors default styling rules, Material-style:
@@ -41,7 +41,7 @@ Check out the sample app in `app/` to see it in action.
 
 # Download
 ```groovy
-compile 'saschpe.android:versioninfo:1.2.9'
+compile 'saschpe.android:versioninfo:1.3.0'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].

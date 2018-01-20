@@ -25,6 +25,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.diffplug.gradle.spotless' version '3.8.0'
+}
+
 allprojects {
     repositories {
         jcenter()
@@ -32,6 +36,21 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+apply plugin: 'com.diffplug.gradle.spotless'
+spotless {
+    freshmark {
+    }
+    java {
+        target '**/*.java'
+        trimTrailingWhitespace()
+        removeUnusedImports()
+    }
+    kotlin {
+        target '**/*.kt'
+        ktlint('0.14.0')
+    }
+    kotlinGradle {
+        target '**/*.gradle.kts'
+        ktlint('0.14.0')
+    }
 }

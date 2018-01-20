@@ -43,6 +43,6 @@ android {
 }
 
 dependencies {
-    compile project(':versioninfo')
-    compile 'com.android.support:appcompat-v7:27.0.2'
+    implementation project(':versioninfo')
+    implementation 'com.android.support:appcompat-v7:27.0.2'
 }

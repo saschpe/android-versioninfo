@@ -16,8 +16,8 @@
 
 package com.example.versioninfo;
 
-import android.app.DialogFragment;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -37,7 +37,7 @@ public final class MainActivity extends AppCompatActivity {
                         BuildConfig.VERSION_NAME,
                         "Sascha Peilicke",
                         R.mipmap.ic_launcher)
-                .show(getFragmentManager(), "version_info");
+                .show(getSupportFragmentManager(), "version_info");
     }
 
     public void showVersionInfoFragment(final View view) {
@@ -47,6 +47,9 @@ public final class MainActivity extends AppCompatActivity {
                 "Sascha Peilicke",
                 R.mipmap.ic_launcher);
 
-        getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 }

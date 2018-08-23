@@ -17,10 +17,10 @@
 package saschpe.android.versioninfo.widget;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,12 +81,9 @@ public final class VersionInfoDialogFragment extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            packageName = getContext().getPackageName();
-        } else {
-            packageName = getActivity().getPackageName();
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //noinspection ConstantConditions
+        packageName = getContext().getPackageName();
 
         // R class is not generated for libraries, thus we have to go the long road...
         // See https://sites.google.com/a/android.com/tools/recent/dealingwithdependenciesinandroidprojects
@@ -116,6 +113,7 @@ public final class VersionInfoDialogFragment extends DialogFragment {
     /**
      * The system calls this only when creating the layout in a dialog.
      * */
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
@@ -135,7 +133,8 @@ public final class VersionInfoDialogFragment extends DialogFragment {
      */
     public String getFormattedVersion() {
         if (isAdded()) {
-            return VersionInfoUtils.getFormattedVersion(getActivity(), packageName, version);
+            //noinspection ConstantConditions isAdded() already checked
+            return VersionInfoUtils.getFormattedVersion(getContext(), packageName, version);
         }
         return null;
     }
@@ -151,7 +150,8 @@ public final class VersionInfoDialogFragment extends DialogFragment {
      */
     public String getFormattedCopyright() {
         if (isAdded()) {
-            return VersionInfoUtils.getFormattedCopyright(getActivity(), packageName, owner);
+            //noinspection ConstantConditions isAdded() already checked
+            return VersionInfoUtils.getFormattedCopyright(getContext(), packageName, owner);
         }
         return null;
     }

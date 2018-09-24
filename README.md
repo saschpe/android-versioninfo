@@ -13,19 +13,18 @@ used as a dialog or fragment. It honors default styling rules, Material-style:
 
 
 # Usage
-Allows to either display a version information dialog:
+Allows to either display version information in a dialog:
 
 ```java
-VersionInfoDialogFragment
-        .newInstance(
-                getString(R.string.app_name),
-                BuildConfig.VERSION_NAME,
-                "Sascha Peilicke",
-                R.mipmap.ic_launcher)
-        .show(getFragmentManager(), "version_info");
+VersionInfoDialogFragment.newInstance(
+        getString(R.string.app_name),
+        BuildConfig.VERSION_NAME,
+        "Sascha Peilicke",
+        R.mipmap.ic_launcher)
+    .show(getSupportFragmentManager(), "version_info");
 ```
 
-Or a fragment:
+Or a (support) Fragment:
 
 ```java
 DialogFragment fragment = VersionInfoDialogFragment.newInstance(
@@ -33,7 +32,10 @@ DialogFragment fragment = VersionInfoDialogFragment.newInstance(
         BuildConfig.VERSION_NAME,
         "Sascha Peilicke",
         R.mipmap.ic_launcher);
-getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+getSupportFragmentManager()
+    .beginTransaction()
+    .replace(R.id.container, fragment)
+    .commit();
 ```
 
 Check out the sample app in `app/` to see it in action.

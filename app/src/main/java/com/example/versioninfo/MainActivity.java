@@ -17,10 +17,10 @@
 package com.example.versioninfo;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import saschpe.android.versioninfo.widget.VersionInfoDialogFragment;
 
 public final class MainActivity extends AppCompatActivity {

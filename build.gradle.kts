@@ -16,18 +16,18 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath("com.android.tools.build:gradle:3.2.1")
     }
 }
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.20.0'
-    id 'com.diffplug.gradle.spotless' version '3.8.0'
+    id("com.diffplug.gradle.spotless") version "3.16.0"
+    id("com.github.ben-manes.versions") version "0.20.0"
 }
 
 allprojects {
@@ -37,21 +37,26 @@ allprojects {
     }
 }
 
-apply plugin: 'com.diffplug.gradle.spotless'
 spotless {
+    format("misc") {
+        target("**/*.gradle", "**/*.md", "**/.gitignore")
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
     freshmark {
+        propertiesFile("gradle.properties")
     }
     java {
-        target '**/*.java'
+        target("**/*.java")
         trimTrailingWhitespace()
         removeUnusedImports()
     }
     kotlin {
-        target '**/*.kt'
-        ktlint('0.14.0')
+        target("*/src/**/*.kt")
+        ktlint("0.29.0")
     }
     kotlinGradle {
-        target '**/*.gradle.kts'
-        ktlint('0.14.0')
+        target("**/*.gradle.kts")
+        ktlint("0.29.0")
     }
 }

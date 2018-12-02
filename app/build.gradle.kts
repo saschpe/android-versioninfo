@@ -45,5 +45,5 @@ android {
 
 dependencies {
     implementation(project(":versioninfo"))
-    implementation("androidx.appcompat:appcompat:1.0.0")
+    implementation("androidx.appcompat:appcompat:1.0.2")
 }

@@ -14,5 +14,7 @@
  * limitations under the License.
  */
 
-include ':app'
-include ':versioninfo'
+rootProject.name = "android-versioninfo"
+
+include(":app")
+include(":versioninfo")

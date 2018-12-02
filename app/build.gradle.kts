@@ -25,8 +25,8 @@ android {
         applicationId = "com.example.versioninfo"
         minSdkVersion(14)
         targetSdkVersion(28)
-        versionCode = 140201
-        versionName = "2.1.0"
+        versionCode = 140202
+        versionName = "2.1.1"
         base.archivesBaseName = "$applicationId-$versionName"
     }
 

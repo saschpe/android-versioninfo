@@ -12,17 +12,18 @@ dependencies {
 
 val ensureSecretsExist: Task by tasks.creating {
     val secretFile = File("buildSrc/src/main/kotlin/Secrets.kt")
-
     description = "Ensures that $secretFile exists"
-
     doFirst {
         if (!secretFile.exists()) {
-            secretFile.writeText("object Secrets {\n" +
-                    "    object Bintray {\n" +
-                    "        val user = \"\"\n" +
-                    "        val apiKey = \"\"\n" +
-                    "    }\n" +
-                    "}")
+            secretFile.writeText(
+                """
+object Secrets {
+    object Bintray {
+        const val user = ""
+        const val apiKey = ""
+    }
+}""".trimIndent()
+            )
         }
     }
 }

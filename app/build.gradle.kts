@@ -27,7 +27,6 @@ android {
         targetSdkVersion(28)
         versionCode = 140020002
         versionName = "2.1.1"
-        base.archivesBaseName = "$applicationId-$versionName"
     }
 
     buildTypes {

@@ -18,7 +18,6 @@ package com.example.versioninfo;
 
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import saschpe.android.versioninfo.widget.VersionInfoDialogFragment;

@@ -66,13 +66,13 @@ val androidJavadoc by tasks.creating(Javadoc::class) {
 }
 
 val androidJavadocJar by tasks.creating(Jar::class) {
-    classifier = "javadoc"
+    archiveClassifier.set("javadoc")
     from(androidJavadoc.destinationDir)
 }
 androidJavadocJar.dependsOn(androidJavadoc)
 
 val androidSourcesJar by tasks.creating(Jar::class) {
-    classifier = "sources"
+    archiveClassifier.set("sources")
     from(android.sourceSets.getByName("main").java.srcDirs)
 }
 

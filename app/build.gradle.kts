@@ -25,8 +25,8 @@ android {
         applicationId = "com.example.versioninfo"
         minSdkVersion(14)
         targetSdkVersion(28)
-        versionCode = 140020002
-        versionName = "2.1.1"
+        versionCode = 140020102
+        versionName = "2.1.2"
     }
 
     buildTypes {

@@ -49,7 +49,7 @@ dependencies {
 }
 
 group = "saschpe.android"
-version = android.defaultConfig.versionName
+version = android.defaultConfig.versionName.toString()
 
 val androidJavadoc by tasks.creating(Javadoc::class) {
     source = android.sourceSets.getByName("main").java.sourceFiles

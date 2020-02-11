@@ -46,7 +46,7 @@ android {
 }
 
 dependencies {
-    api("androidx.fragment:fragment:1.0.0")
+    api("androidx.fragment:fragment:1.2.1")
 }
 
 group = "saschpe.android"

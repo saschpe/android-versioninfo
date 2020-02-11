@@ -22,7 +22,9 @@ object Secrets {
         const val user = ""
         const val apiKey = ""
     }
-}""".trimIndent()
+}
+
+""".trimIndent()
             )
         }
     }

@@ -18,6 +18,11 @@ plugins {
     id("com.android.application")
 }
 
+repositories {
+    google()
+    jcenter()
+}
+
 android {
     compileSdkVersion(28)
 
@@ -25,8 +30,8 @@ android {
         applicationId = "com.example.versioninfo"
         minSdkVersion(14)
         targetSdkVersion(28)
-        versionCode = 140020102
-        versionName = "2.1.2"
+        versionCode = 140020103
+        versionName = "2.1.3"
     }
 
     buildTypes {
@@ -44,5 +49,5 @@ android {
 
 dependencies {
     implementation(project(":versioninfo"))
-    implementation("androidx.appcompat:appcompat:1.0.2")
+    implementation("androidx.appcompat:appcompat:1.1.0")
 }

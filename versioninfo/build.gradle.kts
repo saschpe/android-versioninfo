@@ -23,13 +23,18 @@ plugins {
     `maven-publish`
 }
 
+repositories {
+    google()
+    jcenter()
+}
+
 android {
     compileSdkVersion(28)
 
     defaultConfig {
         minSdkVersion(14)
         targetSdkVersion(28)
-        versionName = "2.1.2"
+        versionName = "2.1.3"
     }
 
     buildTypes {
@@ -41,7 +46,7 @@ android {
 }
 
 dependencies {
-    api("androidx.fragment:fragment:1.0.0")
+    api("androidx.fragment:fragment:1.2.1")
 }
 
 group = "saschpe.android"

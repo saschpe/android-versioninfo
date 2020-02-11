@@ -18,9 +18,8 @@ buildscript {
     repositories {
         google()
     }
-
     dependencies {
-        classpath("com.android.tools.build:gradle:3.4.1")
+        classpath("com.android.tools.build:gradle:3.5.3")
     }
 }
 
@@ -29,11 +28,8 @@ plugins {
     id("com.github.ben-manes.versions") version "0.21.0"
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        google()
-    }
+repositories {
+    jcenter()
 }
 
 spotless {

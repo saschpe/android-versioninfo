@@ -18,6 +18,11 @@ plugins {
     id("com.android.application")
 }
 
+repositories {
+    google()
+    jcenter()
+}
+
 android {
     compileSdkVersion(28)
 

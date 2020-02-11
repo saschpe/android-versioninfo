@@ -49,9 +49,10 @@ compile 'saschpe.android:versioninfo:2.1.0'
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
 
 # In use by
-* [Alpha+ Player](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
+* [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
+* [GameOn - Get games on sale](https://play.google.com/store/apps/details?id=saschpe.gameon)
 * [Birthday Calendar](https://play.google.com/store/apps/details?id=saschpe.contactevents) - Open Source on [Github](https://github.com/saschpe/BirthdayCalendar/)
-* [Planning Poker](https://play.google.com/store/apps/details?id=saschpe.poker) - Open Source on [Github](https://github.com/saschpe/PlanningPoker)
+* [Planning Poker - SCRUM Cards](https://play.google.com/store/apps/details?id=saschpe.poker) - Open Source on [Github](https://github.com/saschpe/PlanningPoker)
 
 # License
 

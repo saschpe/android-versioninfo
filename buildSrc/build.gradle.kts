@@ -1,32 +1,32 @@
 plugins {
-    kotlin("jvm") version "1.3.31"
+    `kotlin-dsl`
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-}
+tasks {
+    val ensureSecretsExist by registering {
+        val secretFile = File("$projectDir/src/main/kotlin/Secrets.kt")
+        description = "Ensures that '$secretFile' exists"
 
-val ensureSecretsExist: Task by tasks.creating {
-    val secretFile = File("buildSrc/src/main/kotlin/Secrets.kt")
-    description = "Ensures that $secretFile exists"
-    doFirst {
-        if (!secretFile.exists()) {
-            secretFile.writeText(
-                """
+        outputs.file(secretFile)
+        doFirst {
+            if (!secretFile.exists()) {
+                secretFile.writeText(
+                    """
 object Secrets {
-    object Bintray {
+    object Sonatype {
         const val user = ""
         const val apiKey = ""
     }
 }
 
 """.trimIndent()
-            )
+                )
+            }
         }
     }
+    named("assemble") { dependsOn(ensureSecretsExist) }
 }
-tasks.getByName("assemble").dependsOn(ensureSecretsExist)

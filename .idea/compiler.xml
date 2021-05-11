@@ -11,5 +11,10 @@
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
+    <bytecodeTargetLevel>
+      <module name="android-versioninfo.app" target="11" />
+      <module name="android-versioninfo.buildSrc" target="11" />
+      <module name="android-versioninfo.versioninfo" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

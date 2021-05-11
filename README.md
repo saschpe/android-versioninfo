@@ -1,5 +1,5 @@
 # Android VersionInfo
-[ ![Download](https://api.bintray.com/packages/saschpe/maven/android-versioninfo/images/download.svg) ](https://bintray.com/saschpe/maven/android-versioninfo/_latestVersion)
+![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/android-versioninfo)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VersionInfo-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3832)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/saschpe/android-versioninfo.svg?branch=master)](https://travis-ci.org/saschpe/android-versioninfo)
@@ -42,11 +42,16 @@ Check out the sample app in `app/` to see it in action.
 
 
 # Download
-```groovy
-compile 'saschpe.android:versioninfo:2.1.0'
-```
+Artifacts are published to [Maven Central][maven-central]:
+```kotlin
+repositories {
+    mavenCentral()
+}
 
-Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
+dependencies {
+    implementation("de.peilicke.sascha:android-versioninfo:2.1.0")
+}
+```
 
 # In use by
 * [Alpha+ Player - Unofficial player for Soma FM](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
@@ -70,6 +75,4 @@ Snapshots of the development version are available in [Sonatype's `snapshots` re
     See the License for the specific language governing permissions and
     limitations under the License.
 
-
-
- [snap]: https://oss.sonatype.org/content/repositories/snapshots/
+[maven-central]: https://search.maven.org/artifact/de.peilicke.sascha/android-customtabs

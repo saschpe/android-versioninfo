@@ -31,8 +31,8 @@ android {
         applicationId = "com.example.versioninfo"
         minSdkVersion(14)
         targetSdkVersion(30)
-        versionCode = 140020103
-        versionName = "2.1.3"
+        versionCode = 140020200
+        versionName = "2.2.0"
     }
 
     buildTypes {

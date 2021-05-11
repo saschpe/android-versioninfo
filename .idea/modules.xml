@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android.android-versioninfo.iml" filepath="$PROJECT_DIR$/.idea/modules/Android.android-versioninfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-versioninfo.iml" filepath="$PROJECT_DIR$/android-versioninfo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-versioninfo.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/android-versioninfo.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.iml" filepath="$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/versioninfo/versioninfo.iml" filepath="$PROJECT_DIR$/versioninfo/versioninfo.iml" />

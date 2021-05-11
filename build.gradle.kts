@@ -19,17 +19,17 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.5.3")
+        classpath("com.android.tools.build:gradle:4.1.1")
     }
 }
 
 plugins {
-    id("com.diffplug.gradle.spotless") version "3.27.1"
-    id("com.github.ben-manes.versions") version "0.27.0"
+    id("com.diffplug.spotless") version "5.12.4"
+    id("com.github.ben-manes.versions") version "0.38.0"
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 spotless {
@@ -39,6 +39,7 @@ spotless {
         endWithNewline()
     }
     freshmark {
+        target("**/*.md")
         propertiesFile("gradle.properties")
     }
     kotlin {
@@ -54,7 +55,6 @@ spotless {
 tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
     rejectVersionIf {
         fun isStable(version: String) = Regex("^[0-9,.v-]+(-r)?$").matches(version)
-
         !isStable(candidate.version) && isStable(currentVersion)
     }
 }

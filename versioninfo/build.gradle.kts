@@ -1,6 +1,3 @@
-import com.jfrog.bintray.gradle.BintrayExtension
-import groovy.util.Node
-
 /*
  * Copyright 2016 Sascha Peilicke
  *
@@ -19,22 +16,24 @@ import groovy.util.Node
 
 plugins {
     id("com.android.library")
-    id("com.jfrog.bintray") version "1.8.4"
+    id("org.jetbrains.dokka") version "1.4.32"
     `maven-publish`
+    signing
 }
 
 repositories {
     google()
-    jcenter()
+    mavenCentral()
 }
 
 android {
-    compileSdkVersion(28)
+    buildToolsVersion("30.0.3")
+    compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(14)
-        targetSdkVersion(28)
-        versionName = "2.1.3"
+        targetSdkVersion(30)
+        versionName = "2.2.0"
     }
 
     buildTypes {
@@ -46,102 +45,96 @@ android {
 }
 
 dependencies {
-    api("androidx.fragment:fragment:1.2.1")
+    api("androidx.fragment:fragment:1.3.3")
 }
 
-group = "saschpe.android"
+group = "de.peilicke.sascha"
 version = android.defaultConfig.versionName.toString()
 
-val androidJavadoc by tasks.creating(Javadoc::class) {
-    source = android.sourceSets.getByName("main").java.sourceFiles
-    classpath += project.files(android.bootClasspath.joinToString(File.pathSeparator))
-
-    android.libraryVariants.all { variant ->
-        if (variant.name == "release") {
-            @Suppress("DEPRECATION")
-            classpath += variant.javaCompile.classpath
-        }
-        true
+tasks {
+    register("javadocJar", Jar::class) {
+        dependsOn(named("dokkaHtml"))
+        archiveClassifier.set("javadoc")
+        from("$buildDir/dokka/html")
     }
-    exclude("**/R.html", "**/R.*.html", "**index.html")
-}
 
-val androidJavadocJar by tasks.creating(Jar::class) {
-    archiveClassifier.set("javadoc")
-    from(androidJavadoc.destinationDir)
-}
-androidJavadocJar.dependsOn(androidJavadoc)
-
-val androidSourcesJar by tasks.creating(Jar::class) {
-    archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.srcDirs)
-}
-
-fun Node.addDependency(dependency: Dependency, scope: String) {
-    appendNode("dependency").apply {
-        appendNode("groupId", dependency.group)
-        appendNode("artifactId", dependency.name)
-        appendNode("version", dependency.version)
-        appendNode("scope", scope)
+    register("sourcesJar", Jar::class) {
+        archiveClassifier.set("sources")
+        from(android.sourceSets.getByName("main").java.srcDirs)
     }
 }
 
-publishing.publications {
-    create("mavenAndroid", MavenPublication::class) {
-        groupId = project.group as String
-        artifactId = project.name
-        version = project.version as String
+publishing {
+    publications {
+        register<MavenPublication>("mavenAndroid") {
+            artifactId = "android-versioninfo"
 
-        afterEvaluate({ artifact(tasks.getByName("bundleReleaseAar")) })
-        artifact(androidJavadocJar)
-        artifact(androidSourcesJar)
+            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+            artifact(tasks.getByName("javadocJar"))
+            artifact(tasks.getByName("sourcesJar"))
 
-        pom.withXml({
-            asNode().appendNode("dependencies").let { dependencies ->
-                // List all "api" dependencies as "compile" dependencies
-                configurations.api.allDependencies.forEach {
-                    dependencies.addDependency(it, "compile")
+            pom {
+                name.set("Android CustomTabs")
+                description.set("A version info widget for Android. Material style.")
+                url.set("https://github.com/saschpe/android-customtabs")
+
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
                 }
-                // List all "implementation" dependencies as "runtime" dependencies
-                configurations.implementation.allDependencies.forEach {
-                    dependencies.addDependency(it, "runtime")
+                developers {
+                    developer {
+                        id.set("saschpe")
+                        name.set("Sascha Peilicke")
+                        email.set("sascha@peilicke.de")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/saschpe/android-versioninfo.git")
+                    developerConnection.set("scm:git:ssh://github.com/saschpe/android-versioninfo.git")
+                    url.set("https://github.com/saschpe/android-versioninfo")
+                }
+
+                withXml {
+                    fun groovy.util.Node.addDependency(dependency: Dependency, scope: String) {
+                        appendNode("dependency").apply {
+                            appendNode("groupId", dependency.group)
+                            appendNode("artifactId", dependency.name)
+                            appendNode("version", dependency.version)
+                            appendNode("scope", scope)
+                        }
+                    }
+
+                    asNode().appendNode("dependencies").let { dependencies ->
+                        // List all "api" dependencies as "compile" dependencies
+                        configurations.api.get().allDependencies.forEach {
+                            dependencies.addDependency(it, "compile")
+                        }
+                        // List all "implementation" dependencies as "runtime" dependencies
+                        configurations.implementation.get().allDependencies.forEach {
+                            dependencies.addDependency(it, "runtime")
+                        }
+                    }
                 }
             }
-        })
+        }
+    }
+
+    repositories {
+        maven {
+            name = "sonatype"
+            credentials {
+                username = Secrets.Sonatype.user
+                password = Secrets.Sonatype.apiKey
+            }
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+        }
     }
 }
 
-bintray {
-    user = Secrets.Bintray.user
-    key = Secrets.Bintray.apiKey
-    setPublications("mavenAndroid")
-    setConfigurations("archives")
-    override = true
-    publish = true
-    pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
-        repo = "maven"
-        name = "android-versioninfo"
-        userOrg = "saschpe"
-        websiteUrl = "https://github.com/saschpe/android-versioninfo"
-        issueTrackerUrl = "https://github.com/saschpe/android-versioninfo/issues"
-        vcsUrl = "https://github.com/saschpe/android-versioninfo.git"
-        desc = "A version info widget for Android. Material style."
-        setLabels("aar", "android")
-        setLicenses("Apache-2.0")
-        publicDownloadNumbers = true
-
-        githubRepo = "saschpe/android-versioninfo"
-        githubReleaseNotesFile = "README.md"
-
-        version(delegateClosureOf<BintrayExtension.VersionConfig> {
-            name = project.version as String
-            desc = "${project.name} ${project.version as String}"
-            // released = java.util.Date()
-            vcsTag = project.version as String
-
-            gpg(delegateClosureOf<BintrayExtension.GpgConfig> {
-                sign = true
-            })
-        })
-    })
+signing {
+    useGpgCmd()
+    sign(publishing.publications["mavenAndroid"])
 }

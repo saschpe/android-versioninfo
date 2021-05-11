@@ -20,18 +20,19 @@ plugins {
 
 repositories {
     google()
-    jcenter()
+    mavenCentral()
 }
 
 android {
-    compileSdkVersion(28)
+    buildToolsVersion("30.0.3")
+    compileSdkVersion(30)
 
     defaultConfig {
         applicationId = "com.example.versioninfo"
         minSdkVersion(14)
-        targetSdkVersion(28)
-        versionCode = 140020103
-        versionName = "2.1.3"
+        targetSdkVersion(30)
+        versionCode = 140020200
+        versionName = "2.2.0"
     }
 
     buildTypes {
@@ -49,5 +50,5 @@ android {
 
 dependencies {
     implementation(project(":versioninfo"))
-    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.appcompat:appcompat:1.2.0")
 }

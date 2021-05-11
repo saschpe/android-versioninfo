@@ -24,12 +24,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion(28)
+    buildToolsVersion("30.0.3")
+    compileSdkVersion(30)
 
     defaultConfig {
         applicationId = "com.example.versioninfo"
         minSdkVersion(14)
-        targetSdkVersion(28)
+        targetSdkVersion(30)
         versionCode = 140020103
         versionName = "2.1.3"
     }
@@ -49,5 +50,5 @@ android {
 
 dependencies {
     implementation(project(":versioninfo"))
-    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.appcompat:appcompat:1.2.0")
 }

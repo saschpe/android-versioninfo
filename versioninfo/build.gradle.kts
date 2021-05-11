@@ -27,11 +27,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion(28)
+    buildToolsVersion("30.0.3")
+    compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(14)
-        targetSdkVersion(28)
+        targetSdkVersion(30)
         versionName = "2.1.3"
     }
 
@@ -44,7 +45,7 @@ android {
 }
 
 dependencies {
-    api("androidx.fragment:fragment:1.2.1")
+    api("androidx.fragment:fragment:1.3.3")
 }
 
 group = "de.peilicke.sascha"

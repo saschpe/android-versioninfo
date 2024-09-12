@@ -126,8 +126,8 @@ publishing {
         maven {
             name = "sonatype"
             credentials {
-                username = Secrets.Sonatype.user
-                password = Secrets.Sonatype.apiKey
+                username = Secrets.Sonatype.USER
+                password = Secrets.Sonatype.API_KEY
             }
             url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
         }

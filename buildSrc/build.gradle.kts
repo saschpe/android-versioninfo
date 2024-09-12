@@ -18,8 +18,8 @@ tasks {
                     """
 object Secrets {
     object Sonatype {
-        const val user = ""
-        const val apiKey = ""
+        const val USER = ""
+        const val API_KEY = ""
     }
 }
 

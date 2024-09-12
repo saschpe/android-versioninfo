@@ -23,15 +23,25 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation(project(":versioninfo"))
+    implementation("androidx.appcompat:appcompat:1.6.1")
+}
+
 android {
-    compileSdk = 31
+    namespace = "com.example.versioninfo"
 
     defaultConfig {
         applicationId = "com.example.versioninfo"
-        minSdk = 14
-        targetSdk = 31
-        versionCode = 140020200
+        compileSdk = 34
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 210020200
         versionName = "2.2.0"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -45,10 +55,4 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
-    namespace = "com.example.versioninfo"
-}
-
-dependencies {
-    implementation(project(":versioninfo"))
-    implementation("androidx.appcompat:appcompat:1.2.0")
 }

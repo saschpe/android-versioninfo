@@ -16,7 +16,7 @@
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.dokka") version "1.4.32"
+    id("org.jetbrains.dokka") version "1.9.20"
     `maven-publish`
     signing
 }
@@ -26,24 +26,24 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    api("androidx.fragment:fragment:1.5.7")
+}
+
 android {
-    compileSdk = 31
+    namespace = "saschpe.android.versioninfo"
 
     defaultConfig {
-        minSdk = 14
+        compileSdk = 34
+        minSdk = 21
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
-    namespace = "saschpe.android.versioninfo"
-}
-
-dependencies {
-    api("androidx.fragment:fragment:1.3.3")
 }
 
 group = "de.peilicke.sascha"

@@ -52,7 +52,7 @@ publishing {
         register<MavenPublication>("mavenAndroid") {
             artifactId = "android-versioninfo"
             groupId = "de.peilicke.sascha"
-            version = "2.2.0"
+            version = "2.3.0"
 
             afterEvaluate {
                 from(components["release"])

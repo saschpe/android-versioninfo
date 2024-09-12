@@ -16,15 +16,12 @@
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.dokka") version "1.9.20"
     `maven-publish`
     signing
 }
 
 dependencies {
-    api("androidx.fragment:fragment:1.5.7")
-
-    dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
+    api("androidx.fragment:fragment:1.8.3")
 }
 
 android {
@@ -41,21 +38,12 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
-}
 
-group = "de.peilicke.sascha"
-version = android.defaultConfig.versionName.toString()
-
-tasks {
-    register("javadocJar", Jar::class) {
-        dependsOn(named("dokkaHtml"))
-        archiveClassifier.set("javadoc")
-        from("${layout.buildDirectory}/dokka/html")
-    }
-
-    register("sourcesJar", Jar::class) {
-        archiveClassifier.set("sources")
-        from(android.sourceSets.getByName("main").java.srcDirs)
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
@@ -63,10 +51,12 @@ publishing {
     publications {
         register<MavenPublication>("mavenAndroid") {
             artifactId = "android-versioninfo"
+            groupId = "de.peilicke.sascha"
+            version = "2.2.0"
 
-            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
-            artifact(tasks.getByName("javadocJar"))
-            artifact(tasks.getByName("sourcesJar"))
+            afterEvaluate {
+                from(components["release"])
+            }
 
             pom {
                 name.set("Android CustomTabs")
@@ -90,28 +80,6 @@ publishing {
                     connection.set("scm:git:git://github.com/saschpe/android-versioninfo.git")
                     developerConnection.set("scm:git:ssh://github.com/saschpe/android-versioninfo.git")
                     url.set("https://github.com/saschpe/android-versioninfo")
-                }
-
-                withXml {
-                    fun groovy.util.Node.addDependency(dependency: Dependency, scope: String) {
-                        appendNode("dependency").apply {
-                            appendNode("groupId", dependency.group)
-                            appendNode("artifactId", dependency.name)
-                            appendNode("version", dependency.version)
-                            appendNode("scope", scope)
-                        }
-                    }
-
-                    asNode().appendNode("dependencies").let { dependencies ->
-                        // List all "api" dependencies as "compile" dependencies
-                        configurations.api.get().allDependencies.forEach {
-                            dependencies.addDependency(it, "compile")
-                        }
-                        // List all "implementation" dependencies as "runtime" dependencies
-                        configurations.implementation.get().allDependencies.forEach {
-                            dependencies.addDependency(it, "runtime")
-                        }
-                    }
                 }
             }
         }

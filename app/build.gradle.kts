@@ -16,11 +16,12 @@
 
 plugins {
     id("com.android.application")
+    kotlin("android")
 }
 
 dependencies {
     implementation(project(":versioninfo"))
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
 }
 
 android {

@@ -18,11 +18,6 @@ plugins {
     id("com.android.application")
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
-
 dependencies {
     implementation(project(":versioninfo"))
     implementation("androidx.appcompat:appcompat:1.6.1")

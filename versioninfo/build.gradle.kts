@@ -21,13 +21,10 @@ plugins {
     signing
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
-
 dependencies {
     api("androidx.fragment:fragment:1.5.7")
+
+    dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
 }
 
 android {

@@ -14,22 +14,10 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        google()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.5.2")
-    }
-}
-
 plugins {
+    id("com.android.application") version "8.5.2" apply false
     id("com.diffplug.spotless") version "6.25.0"
     id("com.github.ben-manes.versions") version "0.51.0"
-}
-
-repositories {
-    mavenCentral()
 }
 
 spotless {

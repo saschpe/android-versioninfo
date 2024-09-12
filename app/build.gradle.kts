@@ -24,12 +24,12 @@ repositories {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "com.example.versioninfo"
         minSdk = 14
-        targetSdk = 30
+        targetSdk = 31
         versionCode = 140020200
         versionName = "2.2.0"
     }

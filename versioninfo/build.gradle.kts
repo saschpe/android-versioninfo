@@ -16,49 +16,34 @@
 
 plugins {
     id("com.android.library")
-    id("org.jetbrains.dokka") version "1.4.32"
     `maven-publish`
     signing
 }
 
-repositories {
-    google()
-    mavenCentral()
+dependencies {
+    api("androidx.fragment:fragment:1.8.3")
 }
 
 android {
-    compileSdk = 31
+    namespace = "saschpe.android.versioninfo"
 
     defaultConfig {
-        minSdk = 14
+        compileSdk = 34
+        minSdk = 21
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
-    namespace = "saschpe.android.versioninfo"
-}
 
-dependencies {
-    api("androidx.fragment:fragment:1.3.3")
-}
-
-group = "de.peilicke.sascha"
-version = android.defaultConfig.versionName.toString()
-
-tasks {
-    register("javadocJar", Jar::class) {
-        dependsOn(named("dokkaHtml"))
-        archiveClassifier.set("javadoc")
-        from("${layout.buildDirectory}/dokka/html")
-    }
-
-    register("sourcesJar", Jar::class) {
-        archiveClassifier.set("sources")
-        from(android.sourceSets.getByName("main").java.srcDirs)
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
@@ -66,10 +51,12 @@ publishing {
     publications {
         register<MavenPublication>("mavenAndroid") {
             artifactId = "android-versioninfo"
+            groupId = "de.peilicke.sascha"
+            version = "2.3.0"
 
-            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
-            artifact(tasks.getByName("javadocJar"))
-            artifact(tasks.getByName("sourcesJar"))
+            afterEvaluate {
+                from(components["release"])
+            }
 
             pom {
                 name.set("Android CustomTabs")
@@ -93,28 +80,6 @@ publishing {
                     connection.set("scm:git:git://github.com/saschpe/android-versioninfo.git")
                     developerConnection.set("scm:git:ssh://github.com/saschpe/android-versioninfo.git")
                     url.set("https://github.com/saschpe/android-versioninfo")
-                }
-
-                withXml {
-                    fun groovy.util.Node.addDependency(dependency: Dependency, scope: String) {
-                        appendNode("dependency").apply {
-                            appendNode("groupId", dependency.group)
-                            appendNode("artifactId", dependency.name)
-                            appendNode("version", dependency.version)
-                            appendNode("scope", scope)
-                        }
-                    }
-
-                    asNode().appendNode("dependencies").let { dependencies ->
-                        // List all "api" dependencies as "compile" dependencies
-                        configurations.api.get().allDependencies.forEach {
-                            dependencies.addDependency(it, "compile")
-                        }
-                        // List all "implementation" dependencies as "runtime" dependencies
-                        configurations.implementation.get().allDependencies.forEach {
-                            dependencies.addDependency(it, "runtime")
-                        }
-                    }
                 }
             }
         }

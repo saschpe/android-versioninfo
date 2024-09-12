@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation("de.peilicke.sascha:android-versioninfo:2.2.0")
+    implementation("de.peilicke.sascha:android-versioninfo:2.3.0")
 }
 ```
 

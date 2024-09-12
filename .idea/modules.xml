@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-versioninfo.app.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-versioninfo.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/android-versioninfo.buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.iml" filepath="$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/versioninfo/android-versioninfo.versioninfo.main.iml" />

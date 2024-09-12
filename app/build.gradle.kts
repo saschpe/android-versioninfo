@@ -24,7 +24,7 @@ repositories {
 }
 
 android {
-    buildToolsVersion("30.0.3")
+    buildToolsVersion = "30.0.3"
     compileSdkVersion(30)
 
     defaultConfig {
@@ -46,6 +46,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+    namespace = "com.example.versioninfo"
 }
 
 dependencies {

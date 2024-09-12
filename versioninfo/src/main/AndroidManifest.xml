@@ -14,8 +14,8 @@
   ~ limitations under the License.
   -->
 
-<manifest package="saschpe.android.versioninfo">
+<manifest>
 
-    <application/>
+    <application />
 
 </manifest>

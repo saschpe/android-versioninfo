@@ -27,13 +27,12 @@ repositories {
 }
 
 android {
-    buildToolsVersion("30.0.3")
+    buildToolsVersion = "30.0.3"
     compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(14)
         targetSdkVersion(30)
-        versionName = "2.2.0"
     }
 
     buildTypes {
@@ -42,6 +41,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+    namespace = "saschpe.android.versioninfo"
 }
 
 dependencies {

@@ -13,21 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("UnstableApiUsage")
 
 pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
-        google()
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
     }
 }
 
-@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
-        google()
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
     }
 }
 

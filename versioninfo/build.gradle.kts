@@ -27,13 +27,10 @@ repositories {
 }
 
 android {
-    buildToolsVersion("30.0.3")
-    compileSdkVersion(30)
+    compileSdk = 31
 
     defaultConfig {
-        minSdkVersion(14)
-        targetSdkVersion(30)
-        versionName = "2.2.0"
+        minSdk = 14
     }
 
     buildTypes {
@@ -42,6 +39,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+    namespace = "saschpe.android.versioninfo"
 }
 
 dependencies {
@@ -55,7 +53,7 @@ tasks {
     register("javadocJar", Jar::class) {
         dependsOn(named("dokkaHtml"))
         archiveClassifier.set("javadoc")
-        from("$buildDir/dokka/html")
+        from("${layout.buildDirectory}/dokka/html")
     }
 
     register("sourcesJar", Jar::class) {
@@ -122,14 +120,16 @@ publishing {
         }
     }
 
-    repositories {
-        maven {
-            name = "sonatype"
-            credentials {
-                username = Secrets.Sonatype.user
-                password = Secrets.Sonatype.apiKey
+    if (hasProperty("sonatypeUser") && hasProperty("sonatypePass")) {
+        repositories {
+            maven {
+                name = "sonatype"
+                credentials {
+                    username = property("sonatypeUser") as String
+                    password = property("sonatypePass") as String
+                }
+                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
             }
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
         }
     }
 }

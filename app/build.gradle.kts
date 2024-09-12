@@ -24,28 +24,28 @@ repositories {
 }
 
 android {
-    buildToolsVersion("30.0.3")
-    compileSdkVersion(30)
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "com.example.versioninfo"
-        minSdkVersion(14)
-        targetSdkVersion(30)
+        minSdk = 14
+        targetSdk = 31
         versionCode = 140020200
         versionName = "2.2.0"
     }
 
     buildTypes {
-        getByName("debug") {
+        debug {
             applicationIdSuffix = ".debug" // Allow installation in parallel to release builds
         }
-        getByName("release") {
+        release {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+    namespace = "com.example.versioninfo"
 }
 
 dependencies {

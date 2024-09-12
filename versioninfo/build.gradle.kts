@@ -27,12 +27,10 @@ repositories {
 }
 
 android {
-    buildToolsVersion = "30.0.3"
-    compileSdkVersion(30)
+    compileSdk = 30
 
     defaultConfig {
-        minSdkVersion(14)
-        targetSdkVersion(30)
+        minSdk = 14
     }
 
     buildTypes {
@@ -55,7 +53,7 @@ tasks {
     register("javadocJar", Jar::class) {
         dependsOn(named("dokkaHtml"))
         archiveClassifier.set("javadoc")
-        from("$buildDir/dokka/html")
+        from("${layout.buildDirectory}/dokka/html")
     }
 
     register("sourcesJar", Jar::class) {

@@ -32,8 +32,8 @@ android {
         compileSdk = 34
         minSdk = 21
         targetSdk = 34
-        versionCode = 210020300
-        versionName = "2.3.0"
+        versionCode = 210020301
+        versionName = "2.3.1"
     }
 
     buildFeatures {

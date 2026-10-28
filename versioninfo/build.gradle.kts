@@ -21,7 +21,7 @@ plugins {
 }
 
 dependencies {
-    api("androidx.fragment:fragment:1.8.3")
+    api("androidx.fragment:fragment:1.9.1")
 }
 
 android {
